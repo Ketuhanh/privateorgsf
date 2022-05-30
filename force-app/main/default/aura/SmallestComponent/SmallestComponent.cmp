@@ -1,0 +1,30 @@
+<aura:component>
+
+    
+    <aura:registerEvent name="demoCaptureEvent" type="c:GenericEvent"/>    
+    <aura:registerEvent name="demoBubbleEvent" type="c:GenericEvent"/>
+
+    <aura:handler name = "init" value = "{!this}" action = "{!c.doInit}"/>
+
+
+    <aura:method name="validationMethod" action="{!c.handleValidate}" description="Sample method with parameters"> 
+        <aura:attribute name="privateMessage" type="String"/> 
+        <aura:attribute name="privateObject" type="Object"/>
+    </aura:method>
+
+    
+    <div class="slds-grid slds-wrap">
+        <div class="slds-col slds-size_6-of-12">
+        </div>
+        <div class="slds-col slds-size_6-of-12">
+            <lightning:button variant="Click to bubble" label="Click to bubble" title="Click to bubble" onclick="{! c.handleBubbleFire }" />
+        </div>
+    </div>
+    <div class="slds-grid slds-wrap">
+        <div class="slds-col slds-size_6-of-12">
+        </div>
+        <div class="slds-col slds-size_6-of-12">
+            <lightning:button variant="Click to capture" label="Click to capture" title="Click to capture" onclick="{! c.handleCaptureFire }" />
+        </div>
+    </div>
+</aura:component>	

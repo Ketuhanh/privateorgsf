@@ -1,0 +1,105 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes,force:hasRecordId" controller="FirstComponentCtrl" access="global">
+    <aura:attribute name="recordId" type="String" />    
+	<aura:attribute name="scenario" type="Planner_Scenario__c"/>
+    <aura:attribute name="message" type="String"/>
+
+    <aura:attribute name="messageToChild" type="String"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+    <aura:attribute name="isOpenPopup" type="Boolean" default="false"/>
+    
+    <aura:handler name="showHideModalEvent" event="c:GenericEvent" action="{!c.handleEvent}"/>
+    <!-- change here -->
+    
+    <div class="slds-grid slds-wrap">    
+        <div class="slds-size_6-of-12">
+            <span>
+            	Salary
+            </span>
+        </div>    
+        <div class="slds-size_6-of-12" style="margin-top: -20px;">
+            <span>
+                <lightning:input type="number" value="{!v.scenario.Salary__c}" formatter="currency" step="0.01"/>
+            </span>
+        </div>          
+        
+        <div class="slds-col slds-size_6-of-12">
+            <span>
+                Working hours
+            </span>
+		</div>
+        <div class="slds-col slds-size_6-of-12 define-top">
+            <span>
+                <lightning:input type="number" value="{!v.scenario.Working_hours__c}" step="1"/>
+            </span>
+		</div>
+        
+        <div class="slds-col slds-size_6-of-12">
+            <span>
+                New salary
+            </span>
+		</div>
+        <div class="slds-col slds-size_6-of-12 define-top">
+            <span>
+                <lightning:input type="number" value="{!v.scenario.New_salary__c}" formatter="currency" step="0.01"/>
+            </span>
+		</div>
+
+        <div class="slds-col slds-size_6-of-12">
+            <span>
+                Date change salary
+            </span>
+		</div>
+        <div class="slds-col slds-size_6-of-12">
+            <span>
+        		<ui:inputDate value="{!v.scenario.Date_change_salary__c}" displayDatePicker="true" format="MM/dd/yyyy"/>
+            </span>
+		</div>       
+        
+        <div class="slds-col slds-size_6-of-12">
+            <span>
+                New working hours
+            </span>
+		</div>
+        <div class="slds-col slds-size_6-of-12 define-top">
+            <span>
+                <lightning:input type="number" value="{!v.scenario.New_working_hours__c}" step="1"/>
+            </span>
+		</div>        
+
+        <div class="slds-col slds-size_6-of-12">
+            <span>
+                Date change working hours
+            </span>
+		</div>
+        <div class="slds-col slds-size_6-of-12">
+            <span>
+        		<ui:inputDate value="{!v.scenario.Date_change_working_hours__c}" displayDatePicker="true" format="MM/dd/yyyy"/>
+            </span>
+		</div>
+
+        <div class="slds-col slds-size_6-of-12">
+		</div>
+        <div class="slds-col slds-size_6-of-12">
+            <lightning:button variant="Save" label="Save" title="Save" onclick="{! c.handleSave }" />
+		</div>
+
+        <aura:if isTrue="{!v.message}">
+            {!v.message}
+        </aura:if> 
+        
+	</div>
+
+    
+    <div class="slds-col slds-size_6-of-12 private-space">
+        <lightning:button variant="Open popup" label="Open popup" title="Open popup" onclick="{! c.handleOpenPopup }" />
+    </div>
+
+    <aura:if isTrue="{!v.isOpenPopup}">
+        <c:GenericPopup parentMessage="{!v.messageToChild}"
+        />
+    </aura:if> 
+    
+    
+</aura:component>

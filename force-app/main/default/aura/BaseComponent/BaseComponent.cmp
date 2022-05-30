@@ -1,0 +1,6 @@
+<aura:component extensible="true" controller="ContactUtil" >
+
+    <aura:attribute name="message" type="String" default="Value on Base Component"/>
+    {!v.body}
+    
+</aura:component>

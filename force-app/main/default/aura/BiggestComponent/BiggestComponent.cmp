@@ -1,0 +1,32 @@
+<aura:component implements="force:lightningQuickAction">
+
+    <aura:attribute name="isOpenMiddle" type="Boolean" default="false"/>
+
+    <aura:handler name = "init" value = "{!this}" action = "{!c.doInit}"/>
+
+    
+    <aura:attribute name="messageToChild" type="String"/>
+
+
+    <aura:attribute name="count" type="Integer" default="0"/>
+
+    
+    <aura:handler name="demoBubbleEvent" event="c:GenericEvent" action="{!c.handleBubbleEvent}"/>
+    <aura:handler name="demoCaptureEvent" event="c:GenericEvent" action="{!c.handleCaptureEvent}" phase="capture"/>
+
+
+
+
+    <aura:if isTrue="{!v.isOpenMiddle}">
+        <c:MediumComponent/>
+        <c:MiddleComponent messageFromParent="{!v.messageToChild}"/>
+    </aura:if> 
+
+
+    
+    <div class="slds-col slds-size_6-of-12 private-space">
+        <lightning:button variant="Change message" label="Change message" title="Change message" onclick="{! c.handleChangeMessage }" />
+    </div>
+    
+    
+</aura:component>	

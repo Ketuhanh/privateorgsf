@@ -1,0 +1,33 @@
+<aura:component implements="force:lightningQuickAction" extends="c:BaseComponent"  access="global" >
+    
+    <br></br>
+    <div>
+        Inherited Component attribute Value =  {!v.message}
+    </div>
+    <br></br>
+
+    <aura:attribute name="ListContact" type="List"/>
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+
+    <div class="slds-align--absolute-center">
+        <table aura:id="accTable" class="slds-table slds-table--bordered slds-table--cell-buffer" cellspacing="0" width="100%">
+
+            <thead>
+                <tr class="slds-text-title--caps">
+                    <th scope="col">Contact ID</th>
+                    <th scope="col">Contact First Name</th>
+                    <th scope="col">Contact Last Name</th>
+                </tr>
+            </thead>   
+            <tbody>
+                <aura:iteration items="{!v.ListContact}" var="contact">
+                    <tr>
+                        <td>{!contact.Id}</td>
+                        <td>{!contact.FirstName}</td>
+                        <td>{!contact.LastName}</td>
+                    </tr>
+                </aura:iteration>
+            </tbody>
+        </table>
+    </div>    
+</aura:component>

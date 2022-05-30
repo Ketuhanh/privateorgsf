@@ -1,0 +1,23 @@
+<aura:component>
+    <aura:handler name = "init" value = "{!this}" action = "{!c.doInit}"/>
+
+    
+    <!-- <aura:handler name="demoBubbleEvent" event="c:GenericEvent" action="{!c.handleBubbleEvent}"/> -->
+    <aura:handler name="demoCaptureEvent" event="c:GenericEvent" action="{!c.handleCaptureEvent}" phase="capture"/>
+
+    <c:SmallestComponent aura:id="SmallestCmpId"/>
+
+    
+    <div class="slds-grid slds-wrap">
+        <div class="slds-col slds-size_6-of-12">
+            This button is inside Medium Component
+        </div>
+        <div class="slds-col slds-size_6-of-12">
+            <lightning:button variant="Click to test aura method"
+                                        label="Click to test aura method"
+                                        title="Click to test aura method"
+                                        onclick="{! c.handleTestAuraMethod }" />
+        </div>
+    </div>
+
+</aura:component>
